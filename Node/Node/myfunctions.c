@@ -71,6 +71,7 @@ void addToLeft() {
         scanf("%d",&currentNode->data);
         currentNode->previous = NULL;
         currentNode->next = NULL;
+        printTheNodes();
         
     } else{
         printf("what's the new data?");
@@ -95,6 +96,7 @@ void addToRight(){
         scanf("%d",&currentNode->data);
         currentNode->next = NULL;
         currentNode->previous = NULL;
+        printTheNodes();
     }else {
         
        //get new data from user
@@ -112,6 +114,10 @@ void addToRight(){
 }
 
 void addMiddleAfter() {
+    
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
     
    Nodeptr * MiddleNode = (Nodeptr *)malloc(sizeof(Nodeptr));
     puts("after which node?");
@@ -131,19 +137,23 @@ void addMiddleAfter() {
     Nodeptr * currentNode = (Nodeptr *)malloc(sizeof(Nodeptr));
     puts("what is the data?");
     scanf("%d",&currentNode->data);
-    Nodeptr * temppPtr;
-    temppPtr = tempPtr->next;
-    temppPtr->previous = currentNode;
-    currentNode->next = temppPtr;
+    Nodeptr * temp2Ptr;
+    temp2Ptr = tempPtr->next;
+    temp2Ptr->previous = currentNode;
+    currentNode->next = temp2Ptr;
     tempPtr->next = currentNode;
     currentNode->previous = tempPtr;
     }
     printTheNodes();
     
 }
-
+}
 
 void addMiddleBefore() {
+    
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
     
     Nodeptr * MiddleNode = (Nodeptr *)malloc(sizeof(Nodeptr));
     puts("before which node?");
@@ -163,10 +173,10 @@ void addMiddleBefore() {
         Nodeptr * currentNode = (Nodeptr *)malloc(sizeof(Nodeptr));
         puts("what is the data?");
         scanf("%d",&currentNode->data);
-        Nodeptr * temppPtr;
-        temppPtr = tempPtr->previous;
-        temppPtr->next = currentNode;
-        currentNode->previous = temppPtr;
+        Nodeptr * temp2Ptr;
+        temp2Ptr = tempPtr->previous;
+        temp2Ptr->next = currentNode;
+        currentNode->previous = temp2Ptr;
         tempPtr->previous = currentNode;
         currentNode->next = tempPtr;
     }
@@ -174,7 +184,7 @@ void addMiddleBefore() {
     
     
 }
-
+}
 
 void deleteNodeFromStart(){
     
