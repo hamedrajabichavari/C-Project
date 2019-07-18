@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     do
     {
         
-        printf("1 - add (left) | 2- add (right) |  5 - print | 6 - print backward |  7 - deleteNodeFromStart | 8 - deleteNodeFromEnd |");
+        printf("1 - add (left) | 2- add (right) |  3 - addMiddleAfter | 4 - addMiddleBefore | 5 - print | 6 - print backward |  7 - deleteNodeFromStart | 8 - deleteNodeFromEnd |");
         puts("99 - extend the menu | ");
         scanf("%d", &choice);
         
@@ -48,11 +48,11 @@ int main(int argc, char *argv[])
                 addToRight();
                 break;
             case 3:
-                puts("under construction");
+               
                 addMiddleAfter();
                 break;
             case 4:
-                puts("under construction");
+              
                 addMiddleBefore();
                 break;
             case 5:

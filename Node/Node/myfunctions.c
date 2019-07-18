@@ -33,7 +33,7 @@ void printTheNodes() {
             currentPtr = currentPtr->next;
         }
         printf("NULL\n");
-        puts("------");
+        puts("-------------------");
         
         puts("");
     }
@@ -53,7 +53,7 @@ void printTheNodesBackwards() {
             currentPtr = currentPtr->previous;
         }
         printf("NULL\n");
-        puts("------");
+        puts("------------------");
         
         puts("");
     }
@@ -113,34 +113,103 @@ void addToRight(){
 
 void addMiddleAfter() {
     
+   Nodeptr * MiddleNode = (Nodeptr *)malloc(sizeof(Nodeptr));
+    puts("after which node?");
+    scanf("%d",&MiddleNode->data);
+    Nodeptr * tempPtr;
+    tempPtr = start;
+    while(tempPtr->data != MiddleNode->data){
+        
+        tempPtr = tempPtr->next;
+    }
+    
+    if(tempPtr == endNode){
+        addToRight();
+        
+    }else{
+    
+    Nodeptr * currentNode = (Nodeptr *)malloc(sizeof(Nodeptr));
+    puts("what is the data?");
+    scanf("%d",&currentNode->data);
+    Nodeptr * temppPtr;
+    temppPtr = tempPtr->next;
+    temppPtr->previous = currentNode;
+    currentNode->next = temppPtr;
+    tempPtr->next = currentNode;
+    currentNode->previous = tempPtr;
+    }
+    printTheNodes();
+    
 }
 
 
 void addMiddleBefore() {
     
+    Nodeptr * MiddleNode = (Nodeptr *)malloc(sizeof(Nodeptr));
+    puts("before which node?");
+    scanf("%d",&MiddleNode->data);
+    Nodeptr * tempPtr;
+    tempPtr = endNode;
+    while(tempPtr->data != MiddleNode->data){
+        
+        tempPtr = tempPtr->previous;
+    }
+    
+    if(tempPtr == start){
+        addToLeft();
+        
+    }else{
+        
+        Nodeptr * currentNode = (Nodeptr *)malloc(sizeof(Nodeptr));
+        puts("what is the data?");
+        scanf("%d",&currentNode->data);
+        Nodeptr * temppPtr;
+        temppPtr = tempPtr->previous;
+        temppPtr->next = currentNode;
+        currentNode->previous = temppPtr;
+        tempPtr->previous = currentNode;
+        currentNode->next = tempPtr;
+    }
+    printTheNodes();
+    
+    
 }
 
 
-void deleteNodeFromStart(void){
-   
-    Nodeptr * tempPtr;
-    tempPtr = start->next;
-    tempPtr->previous = NULL;
-    free(start);
-    start = tempPtr;
+void deleteNodeFromStart(){
     
+     if(start == endNode ){
+         //there is only 1 node
+         free(start);
+         start = NULL;
+         endNode = NULL;
+     }else{
+         //there are more than 1 node
+         Nodeptr * tempPtr;
+         tempPtr = start->next;
+         tempPtr->previous = NULL;
+         free(start);
+         start = tempPtr;
+     }
     printTheNodes();
 }
 
 
-void deleteNodeFromEnd(void){
+void deleteNodeFromEnd(){
     
+    if(start == endNode ){
+         //there is only 1 node
+        free(endNode);
+        start = NULL;
+        endNode = NULL;
+    }else{
+    //there are more than 1 node
     Nodeptr * tempPtr;
     tempPtr = endNode->previous;
     tempPtr->next = NULL;
     free(endNode);
     endNode = tempPtr;
-    
+    }
     printTheNodes();
 }
 
