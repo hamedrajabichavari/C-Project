@@ -146,10 +146,12 @@ void addMiddleAfter() {
     }
     printTheNodes();
     
+    
 }
 }
 
 void addMiddleBefore() {
+    
     
     if(start == NULL && endNode == NULL){
         puts("no code no print");
@@ -223,6 +225,50 @@ void deleteNodeFromEnd(){
     printTheNodes();
 }
 
+void deleteNode() {
+    
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
+        
+        Nodeptr * MiddleNode = (Nodeptr *)malloc(sizeof(Nodeptr));
+        puts("which node do you want to delete?");
+        scanf("%d",&MiddleNode->data);
+        Nodeptr * tempPtr;
+        tempPtr = start;
+        while(tempPtr->data != MiddleNode->data){
+            
+            tempPtr = tempPtr->next;
+        }
+        
+        if(tempPtr == endNode){
+           deleteNodeFromEnd();
+            
+       
+        }else{
+            if(tempPtr == start){
+            deleteNodeFromStart();
+            
+            
+        }
+        else{
+            
+            Nodeptr * temp1Ptr;
+            Nodeptr * temp2Ptr;
+            temp1Ptr = tempPtr->previous;
+            temp2Ptr = tempPtr->next;
+            temp2Ptr->previous = temp1Ptr;
+            temp1Ptr->next = temp2Ptr;
+            free(tempPtr);
+        }
+        }
+        printTheNodes();
+        
+        
+    }
+}
+
+
 void menu() {
     puts("");
     printf("\t\twelcome, please select one\n");
@@ -234,6 +280,7 @@ void menu() {
     printf("\t\t6- printf the list backward\n");
     printf("\t\t7- delete a node (start)\n");
     printf("\t\t8- delete a node (end)\n");
+    printf("\t\t9- delete a node\n");
     printf("\t\t0- exit\n");
     printf("? :  ");
 }

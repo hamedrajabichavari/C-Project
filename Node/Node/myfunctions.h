@@ -16,4 +16,5 @@ void printTheNodesBackwards(void);
 void addToRight(void);
 void addMiddleAfter(void);
 void addMiddleBefore(void);
+void deleteNode(void);
 void menu(void);
