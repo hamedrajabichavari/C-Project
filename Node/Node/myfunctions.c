@@ -207,6 +207,7 @@ void deleteNodeFromStart(){
 }
 
 
+
 void deleteNodeFromEnd(){
     
     if(start == endNode ){
@@ -269,6 +270,137 @@ void deleteNode() {
 }
 
 
+void deleteAllNodes() {
+    
+        
+        while(start != NULL){
+            
+            if(start == endNode ){
+                //there is only 1 node
+                free(start);
+                start = NULL;
+                endNode = NULL;
+            }else{
+                //there are more than 1 node
+                Nodeptr * tempPtr;
+                tempPtr = start->next;
+                tempPtr->previous = NULL;
+                free(start);
+                start = tempPtr;
+            }
+        }
+    printTheNodes();
+    }
+
+void printNumbers(int oddOrEven){
+    
+    if( start == NULL){
+        puts("list is empty");
+        return;
+    }
+    Nodeptr * current = start;
+    
+    
+    while(current != NULL){
+        
+        if(current->data % 2 == oddOrEven){
+            printf("| %d |-->",current->data);
+        }
+        
+        current = current->next;
+    }
+    
+    puts("");
+    
+    
+}
+
+void replaceNode() {
+    
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
+        
+        int wrongdata;
+        puts("which node do you want to replace?");
+        scanf("%d",&wrongdata);
+        Nodeptr * tempPtr;
+        tempPtr = start;
+        while(tempPtr->data != wrongdata){
+            
+            tempPtr = tempPtr->next;
+        }
+        int correctdata;
+        puts("what is the correct data?");
+        scanf("%d",&correctdata);
+        tempPtr->data = correctdata;
+        
+        printTheNodes();
+        
+        
+    }
+}
+
+void sortTheNodes(){
+    
+    //there is no node
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }
+    
+    //there is at least 1 node
+    else {
+        printf("the size is %d\n",sizeoflist());
+        Nodeptr * current;
+        //comparing the nodes from start to end
+        for(int i=0 ; i< sizeoflist() ; i+=1){
+            //comparing from start to the node that already fixed
+            for(int j =0 ; j<sizeoflist()-1-i ; j+=1){
+                current = start;
+                while(current->next != NULL){
+                    swap (&current->data , &current->next->data);
+                    current = current->next;
+                }
+            }
+        }
+            printTheNodes();
+    }
+        
+        
+        
+}
+
+
+
+//sizeoflist function
+
+int sizeoflist(){
+    
+    int count = 0 ;
+    Nodeptr * current = start;
+    while ( current != NULL){
+        count +=1;
+        current = current->next;
+    }
+    return count;
+}
+
+//swap function
+
+void swap ( int * a , int * b){
+    
+    int c;
+    
+    if(*a > *b){
+        c = *a;
+        *a = *b;
+        *b = c;
+    }
+}
+
+    
+
+
 void menu() {
     puts("");
     printf("\t\twelcome, please select one\n");
@@ -281,6 +413,11 @@ void menu() {
     printf("\t\t7- delete a node (start)\n");
     printf("\t\t8- delete a node (end)\n");
     printf("\t\t9- delete a node\n");
+    printf("\t\t10- delete all nodes\n");
+    printf("\t\t11- print odd numbers\n");
+    printf("\t\t12- print even numbers\n");
+    printf("\t\t13- replace node\n");
+    printf("\t\t14- sort the nodes\n");
     printf("\t\t0- exit\n");
     printf("? :  ");
 }

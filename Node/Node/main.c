@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     do
     {
         
-        printf("1 - add (left) | 2- add (right) |  3 - addMiddleAfter | 4 - addMiddleBefore | 5 - print | 6 - print backward |  7 - deleteNodeFromStart | 8 - deleteNodeFromEnd | 9 - deleteNode |");
+        printf("1 - add (left) | 2- add (right) |  3 - addMiddleAfter | 4 - addMiddleBefore | 5 - print | 6 - print backward |  7 - deleteNodeFromStart | 8 - deleteNodeFromEnd | 9 - deleteNode |10 - deleteAllNodes | 11 - printoddNumbers | 12 - printevenNumbers | 13 - replaceNode | 14 - sortTheNodes |");
         puts("99 - extend the menu | ");
         scanf("%d", &choice);
         
@@ -70,6 +70,21 @@ int main(int argc, char *argv[])
                 break;
             case 9:
                 deleteNode();
+                break;
+            case 10:
+                deleteAllNodes();
+                break;
+            case 11:
+                printNumbers(1);//odd
+                break;
+            case 12:
+                printNumbers(0);//even
+                break;
+            case 13:
+                replaceNode();
+                break;
+            case 14:
+                sortTheNodes();
                 break;
             case 0:
                 break;
