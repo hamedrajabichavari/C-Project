@@ -9,6 +9,8 @@
 #pragma once
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+#include <math.h>
 //prototypes
 void addToLeft(void);
 void printTheNodes(void);
@@ -23,4 +25,7 @@ void replaceNode(void);
 void sortTheNodes(void);
 void swap ( int * a , int * b);
 int sizeoflist(void);
+int printRandomNumber(void);
+int isPrime(long number);
+void test(void);
 void menu(void);

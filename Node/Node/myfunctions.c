@@ -7,6 +7,7 @@
 //
 
 #include "myFunctions.h"
+#include <time.h>
 
 typedef struct Node Nodeptr;
 
@@ -67,15 +68,17 @@ void addToLeft() {
          //this is a first node
         start = currentNode;
         endNode = currentNode;
-        printf("what's the data?");
-        scanf("%d",&currentNode->data);
+//        printf("what's the data?");
+//        scanf("%d",&currentNode->data);
+        currentNode->data = printRandomNumber();
         currentNode->previous = NULL;
         currentNode->next = NULL;
         printTheNodes();
         
     } else{
-        printf("what's the new data?");
-        scanf("%d",&currentNode->data);
+//        printf("what's the new data?");
+//        scanf("%d",&currentNode->data);
+        currentNode->data = printRandomNumber();
         currentNode->previous = NULL;
         currentNode->next = start;
         start->previous = currentNode;
@@ -92,8 +95,9 @@ void addToRight(){
         //this is a first node
         start = currentNode;
         endNode = currentNode;
-        printf("what is the data?");
-        scanf("%d",&currentNode->data);
+        //printf("what is the data?");
+        //scanf("%d",&currentNode->data);
+        currentNode->data = printRandomNumber();
         currentNode->next = NULL;
         currentNode->previous = NULL;
         printTheNodes();
@@ -101,8 +105,10 @@ void addToRight(){
         
        //get new data from user
         
-        puts("add one more node");
-        scanf("%d",&currentNode->data);
+        //puts("add one more node");
+        //scanf("%d",&currentNode->data);
+        
+        currentNode->data = printRandomNumber();
         currentNode->next = NULL;
         currentNode->previous = endNode;
         endNode->next = currentNode;
@@ -135,8 +141,9 @@ void addMiddleAfter() {
     }else{
     
     Nodeptr * currentNode = (Nodeptr *)malloc(sizeof(Nodeptr));
-    puts("what is the data?");
-    scanf("%d",&currentNode->data);
+//    puts("what is the data?");
+//    scanf("%d",&currentNode->data);
+    currentNode->data = printRandomNumber();
     Nodeptr * temp2Ptr;
     temp2Ptr = tempPtr->next;
     temp2Ptr->previous = currentNode;
@@ -173,8 +180,9 @@ void addMiddleBefore() {
     }else{
         
         Nodeptr * currentNode = (Nodeptr *)malloc(sizeof(Nodeptr));
-        puts("what is the data?");
-        scanf("%d",&currentNode->data);
+//        puts("what is the data?");
+//        scanf("%d",&currentNode->data);
+        currentNode->data = printRandomNumber();
         Nodeptr * temp2Ptr;
         temp2Ptr = tempPtr->previous;
         temp2Ptr->next = currentNode;
@@ -331,8 +339,9 @@ void replaceNode() {
             tempPtr = tempPtr->next;
         }
         int correctdata;
-        puts("what is the correct data?");
-        scanf("%d",&correctdata);
+//        puts("what is the correct data?");
+//        scanf("%d",&correctdata);
+        correctdata = printRandomNumber();
         tempPtr->data = correctdata;
         
         printTheNodes();
@@ -398,7 +407,53 @@ void swap ( int * a , int * b){
     }
 }
 
+int printRandomNumber(){
+   
+    //unique number
+    srand((unsigned int)time(NULL));
     
+ //randomly creat 1 -10
+    //for(int i = 0 ; i < 1 ; i+= 1){
+     return rand()%100;
+    
+    //}
+}
+
+int isPrime(long number){
+    
+    if(number<2)
+        //not a prime number return 0
+        return 0;
+    
+    if(number==2)
+        //prime number return 1
+        return 1;
+    
+ 
+    for( int i = 2 ; i<= (int)sqrt(number); i+=1){
+        if ( number % i == 0)
+            return 0;
+        
+    }
+            return 1;
+    
+}
+    
+void test(){
+    for( int i = 0 , counter = 0; counter < 10002 ; i+= 1){
+        if (isPrime(i) == 1){
+            counter += 1;
+            if (counter == 10001){
+                printf("the 10001st prime number is : %d\n", i);
+                break;
+            }
+            
+        }
+    }
+    
+}
+    
+
 
 
 void menu() {
@@ -418,6 +473,7 @@ void menu() {
     printf("\t\t12- print even numbers\n");
     printf("\t\t13- replace node\n");
     printf("\t\t14- sort the nodes\n");
+    printf("\t\t14- print prime numbers\n");
     printf("\t\t0- exit\n");
     printf("? :  ");
 }
