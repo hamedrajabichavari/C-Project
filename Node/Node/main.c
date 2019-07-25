@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     do
     {
         
-        printf("1 - add (left) | 2- add (right) |  3 - addMiddleAfter | 4 - addMiddleBefore | 5 - print | 6 - print backward |  7 - deleteNodeFromStart | 8 - deleteNodeFromEnd | 9 - deleteNode |10 - deleteAllNodes | 11 - printoddNumbers | 12 - printevenNumbers | 13 - replaceNode | 14 - sortTheNodes | 15 - test(primenumbers) |");
+        printf("1 - add (left) | 2- add (right) |  3 - addMiddleAfter | 4 - addMiddleBefore | 5 - print | 6 - print backward |  7 - deleteNodeFromStart | 8 - deleteNodeFromEnd | 9 - deleteNode |10 - deleteAllNodes | 11 - printoddNumbers | 12 - printevenNumbers | 13 - replaceNode | 14 - sortTheNodes | 15 - test(primenumbers) | 16 - howmanytimes | 17 - keepjustone | 18 - set |");
         puts("99 - extend the menu | ");
         scanf("%d", &choice);
         
@@ -88,6 +88,15 @@ int main(int argc, char *argv[])
                 break;
             case 15:
                 test();
+                break;
+            case 16:
+                howmanytimes();
+                break;
+            case 17:
+                keepjustone();
+                break;
+            case 18:
+                set();
                 break;
             case 0:
                 break;

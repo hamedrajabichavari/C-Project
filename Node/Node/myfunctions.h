@@ -28,4 +28,7 @@ int sizeoflist(void);
 int printRandomNumber(void);
 int isPrime(long number);
 void test(void);
+void howmanytimes(void);
+void keepjustone(void);
+void set(void);
 void menu(void);

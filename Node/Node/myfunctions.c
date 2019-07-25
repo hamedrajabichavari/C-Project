@@ -453,6 +453,149 @@ void test(){
     
 }
     
+void howmanytimes(){
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
+        int data;
+        puts("which node do you want to know how many times repeat?");
+        scanf("%d",&data);
+        Nodeptr * tempPtr;
+        tempPtr = start;
+        int count = 0;
+        while(tempPtr != endNode){
+            
+            while(tempPtr->data != data && tempPtr != endNode){
+                tempPtr = tempPtr->next;
+
+            }
+
+            if(tempPtr == endNode){
+                break;
+                
+            }
+            
+            
+            count +=1;
+            tempPtr = tempPtr->next;
+       
+        }
+        if(endNode->data == data){
+         printf("the times of %d is : %d\n",data,count+1);
+        }else{
+        printf("the times of %d is : %d\n",data,count);
+        }
+    }
+}
+
+void keepjustone(){
+    
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
+        int data;
+        puts("which node do you want to keep just one?");
+        scanf("%d",&data);
+        Nodeptr * tempPtr;
+        tempPtr = start;
+        int count = 0;
+        while(tempPtr != endNode){
+            
+            while(tempPtr->data != data && tempPtr != endNode){
+                tempPtr = tempPtr->next;
+            }
+            if(tempPtr == endNode){
+                break;
+                
+            }
+            
+            count +=1;
+            if(count == 1){
+            tempPtr = tempPtr->next;
+            }
+            if(count == 2){
+                Nodeptr * temp1Ptr;
+                Nodeptr * temp2Ptr;
+                temp1Ptr = tempPtr->previous;
+                temp2Ptr = tempPtr->next;
+                temp2Ptr->previous = temp1Ptr;
+                temp1Ptr->next = temp2Ptr;
+                free(tempPtr);
+                tempPtr = temp2Ptr;
+                count = 1;
+            }
+            
+            
+        }
+        if(endNode->data == data){
+            tempPtr = endNode->previous;
+            tempPtr->next = NULL;
+            free(endNode);
+            endNode = tempPtr;
+        }
+
+         printTheNodes();
+    }
+}
+
+
+void set(){
+    
+    if(start == NULL && endNode == NULL){
+        puts("no code no print");
+    }else {
+        
+//        puts("which node do you want to keep just one?");
+//        scanf("%d",&data);
+        Nodeptr * tempPtr;
+        Nodeptr * current;
+        tempPtr = start;
+        current = tempPtr;
+        for(int i=0 ; i< sizeoflist() ; i+=1){
+            tempPtr = current;
+            int data = tempPtr->data;
+            int count = 0;
+            while(tempPtr != endNode){
+                
+                while(tempPtr->data != data && tempPtr != endNode){
+                    tempPtr = tempPtr->next;
+                }
+                if(tempPtr == endNode){
+                    break;
+                    
+                }
+                
+                count +=1;
+                if(count == 1){
+                    tempPtr = tempPtr->next;
+                }
+                if(count == 2){
+                    Nodeptr * temp1Ptr;
+                    Nodeptr * temp2Ptr;
+                    temp1Ptr = tempPtr->previous;
+                    temp2Ptr = tempPtr->next;
+                    temp2Ptr->previous = temp1Ptr;
+                    temp1Ptr->next = temp2Ptr;
+                    free(tempPtr);
+                    tempPtr = temp2Ptr;
+                    count = 1;
+                }
+                
+            }
+            if(endNode->data == data){
+                tempPtr = endNode->previous;
+                tempPtr->next = NULL;
+                free(endNode);
+                endNode = tempPtr;
+            }
+           
+            current = current->next;
+            
+        }
+        
+        printTheNodes();
+    }
+}
 
 
 
