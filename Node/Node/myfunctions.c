@@ -527,7 +527,7 @@ void keepjustone(){
             
             
         }
-        if(endNode->data == endNode->previous->data){
+        if(endNode->data == data && endNode->data == endNode->previous->data){
             tempPtr = endNode->previous;
             tempPtr->next = NULL;
             free(endNode);
