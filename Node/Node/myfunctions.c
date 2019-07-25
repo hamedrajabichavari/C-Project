@@ -527,7 +527,7 @@ void keepjustone(){
             
             
         }
-        if(endNode->data == data){
+        if(endNode->data == endNode->previous->data){
             tempPtr = endNode->previous;
             tempPtr->next = NULL;
             free(endNode);
@@ -582,7 +582,7 @@ void set(){
                 }
                 
             }
-            if(endNode->data == data){
+            if(endNode->data == endNode->previous->data){
                 tempPtr = endNode->previous;
                 tempPtr->next = NULL;
                 free(endNode);
@@ -616,7 +616,10 @@ void menu() {
     printf("\t\t12- print even numbers\n");
     printf("\t\t13- replace node\n");
     printf("\t\t14- sort the nodes\n");
-    printf("\t\t14- print prime numbers\n");
+    printf("\t\t15- primenumbers\n");
+    printf("\t\t16- howmanytimes\n");
+    printf("\t\t17- keepjustone\n");
+    printf("\t\t18- set\n");
     printf("\t\t0- exit\n");
     printf("? :  ");
 }
